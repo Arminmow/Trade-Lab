@@ -1,21 +1,25 @@
-import type { ReactNode } from "react";
+import { useRef, type ChangeEvent, type ReactNode } from "react";
+import { UploadIcon } from "../../icons";
 import styles from "./EmptyState.module.css";
 
-interface EmptyStateAction {
-  label: string;
-  icon?: ReactNode;
-  onClick?: () => void;
-}
+const ACCEPTED_EXTENSIONS = [".csv", ".htm", ".html"];
 
 interface EmptyStateProps {
   icon: ReactNode;
   title: string;
   description: string;
-  action?: EmptyStateAction;
-  hint?: string;
+  onFileSelect?: (file: File) => void;
 }
 
-function EmptyState({ icon, title, description, action, hint }: EmptyStateProps) {
+function EmptyState({ icon, title, description, onFileSelect }: EmptyStateProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) onFileSelect?.(file);
+    e.target.value = ""; // lets the user pick the same file again
+  };
+
   return (
     <section className={styles.card}>
       {/* decorative price line in the background */}
@@ -32,14 +36,19 @@ function EmptyState({ icon, title, description, action, hint }: EmptyStateProps)
           <p className={styles.description}>{description}</p>
         </div>
 
-        {action && (
-          <button type="button" className={styles.action} onClick={action.onClick}>
-            {action.icon}
-            {action.label}
-          </button>
-        )}
+        <input
+          ref={inputRef}
+          type="file"
+          accept={ACCEPTED_EXTENSIONS.join(",")}
+          onChange={handleChange}
+          hidden
+        />
+        <button type="button" className={styles.uploadButton} onClick={() => inputRef.current?.click()}>
+          <UploadIcon />
+          Upload file
+        </button>
 
-        {hint && <span className={styles.hint}>{hint}</span>}
+        <span className={styles.hint}>{ACCEPTED_EXTENSIONS.join(" · ")}</span>
       </div>
     </section>
   );
