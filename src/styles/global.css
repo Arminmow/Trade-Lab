@@ -12,6 +12,8 @@
   --accent: #22e3a0;
   --accent-ink: #04130d;
   --loss: #ff5c7a;
+  --surface-hover: #131925;
+  --accent-soft: rgba(34, 227, 160, 0.1);
 
   --font-body: "Inter", system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;

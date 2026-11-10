@@ -1,10 +1,8 @@
+import { NavLink } from "react-router";
+import { tabs } from "../../tabs";
 import styles from "./Sidebar.module.css";
 
-interface SidebarProps {
-  onUploadClick: () => void;
-}
-
-function Sidebar({ onUploadClick }: SidebarProps) {
+function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.brand}>
@@ -12,11 +10,17 @@ function Sidebar({ onUploadClick }: SidebarProps) {
         <span className={styles.brandName}>Trade Lab</span>
       </div>
 
-      <nav aria-label="Main">
-        <button type="button" className={styles.uploadButton} onClick={onUploadClick}>
-          <UploadIcon />
-          Upload file
-        </button>
+      <nav className={styles.nav} aria-label="Main">
+        {tabs.map((tab) => (
+          <NavLink
+            key={tab.path}
+            to={`/${tab.path}`}
+            className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ""}`}
+          >
+            {tab.icon}
+            {tab.label}
+          </NavLink>
+        ))}
       </nav>
     </aside>
   );
@@ -30,14 +34,6 @@ function LogoIcon() {
       <rect x="8.5" y="13" width="5" height="9" rx="1" fill="var(--accent)" />
       <rect x="15.5" y="15" width="5" height="8" rx="1" fill="var(--loss)" />
       <rect x="22.5" y="11" width="5" height="10" rx="1" fill="var(--accent)" />
-    </svg>
-  );
-}
-
-function UploadIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />
     </svg>
   );
 }
