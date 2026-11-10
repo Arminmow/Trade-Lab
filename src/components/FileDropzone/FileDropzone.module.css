@@ -1,0 +1,78 @@
+.dropzone {
+  flex: 1;
+  min-height: 380px;
+  padding: 40px 24px;
+  border: 2px dashed var(--border-strong);
+  border-radius: 20px;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dropzone:hover,
+.dragging {
+  border-color: var(--accent);
+  background: #0f1a1a;
+}
+
+.iconBox {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: #121a26;
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.browseButton {
+  min-height: 46px;
+  padding: 0 28px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font: 600 15px var(--font-body);
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.browseButton:hover {
+  filter: brightness(1.15);
+}
+
+.browseButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.meta {
+  font: 400 12px var(--font-mono);
+  color: #8793a8;
+}
