@@ -11,7 +11,6 @@ function TradesPage() {
         icon={<TableIcon size={32} />}
         title='No trades yet'
         description='Upload your trade history and every trade will show up here.'
-        onFileSelect={console.log}
       />
     </>
   );

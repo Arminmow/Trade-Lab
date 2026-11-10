@@ -1,5 +1,6 @@
 import { useRef, type ChangeEvent, type ReactNode } from "react";
 import { UploadIcon } from "../../icons";
+import { tradeHistoryService } from "../../features/trades/tradeHistoryService";
 import styles from "./EmptyState.module.css";
 
 const ACCEPTED_EXTENSIONS = [".csv", ".htm", ".html"];
@@ -8,15 +9,14 @@ interface EmptyStateProps {
   icon: ReactNode;
   title: string;
   description: string;
-  onFileSelect?: (file: File) => void;
 }
 
-function EmptyState({ icon, title, description, onFileSelect }: EmptyStateProps) {
+function EmptyState({ icon, title, description }: EmptyStateProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) onFileSelect?.(file);
+    if (file) tradeHistoryService.load(file);
     e.target.value = ""; // lets the user pick the same file again
   };
 
