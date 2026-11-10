@@ -1,0 +1,99 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-height: 380px;
+  padding: 40px 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.chart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.content {
+  position: relative; /* sits above the background chart */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.iconBox {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: #121a26;
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.description {
+  margin: 0;
+  max-width: 380px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.action {
+  min-height: 48px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 600 15px var(--font-body);
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.15s;
+}
+
+.action:hover {
+  filter: brightness(1.1);
+}
+
+.action:active {
+  transform: translateY(1px);
+}
+
+.action:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.hint {
+  font: 400 12px var(--font-mono);
+  color: #8793a8;
+}
