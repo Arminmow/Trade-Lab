@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Design tokens: one place to change the whole theme */
+:root {
+  --bg: #0a0d13;
+  --surface: #0e121a;
+  --panel: #0d1119;
+  --border: #1b2230;
+  --border-strong: #2a3548;
+  --text: #e8ecf4;
+  --muted: #98a3b8;
+  --accent: #22e3a0;
+  --accent-ink: #04130d;
+  --loss: #ff5c7a;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
