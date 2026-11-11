@@ -16,7 +16,7 @@ function EmptyState({ icon, title, description }: EmptyStateProps) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) tradeHistoryService.load(file);
+    if (file) tradeHistoryService.load(file).catch(console.error);
     e.target.value = ""; // lets the user pick the same file again
   };
 
